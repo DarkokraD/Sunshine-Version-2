@@ -16,14 +16,16 @@
 
 package com.example.android.sunshine.app;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class DetailActivity extends ActionBarActivity {
 
@@ -31,9 +33,17 @@ public class DetailActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        PlaceholderFragment fragment = new PlaceholderFragment();
+        Intent intent = getIntent();
+        String forecast = intent.getStringExtra(Intent.EXTRA_TEXT);
+
+        Bundle args = new Bundle();
+        args.putString("forecast", forecast);
+        fragment.setArguments(args);
+
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, fragment)
                     .commit();
         }
     }
@@ -74,6 +84,13 @@ public class DetailActivity extends ActionBarActivity {
                                  Bundle savedInstanceState) {
 
             View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
+
+            Bundle arguments = getArguments();
+            String forecast = arguments.getString("forecast");
+
+            TextView view = (TextView) rootView.findViewById(R.id.detailsTextView);
+            view.setText(forecast);
+
             return rootView;
         }
     }
