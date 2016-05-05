@@ -8,11 +8,29 @@
     -->
     <string name="app_name">Sunshine</string>
 
+    //Preferences
+    <string name="pref_location_label">Location</string>
+    <string name="pref_location_key">location</string>
+    <string name="pref_location_default">Zagreb</string>
+    <string name="pref_units_label">Units</string>
+    <string name="pref_units_key">units</string>
+    <integer name="pref_units_default">1</integer>
+    <string-array name="pref_units_values">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="pref_units">
+        <item>"Metric"</item>
+        <item>"Imperial"</item>
+    </string-array>
+
     <!--
          By convention, "action" denotes that this String will be used as the label for an Action,
          typically from the action bar.  The ActionBar is limited real estate, so shorter is better.
     -->
     <string name="action_settings">Settings</string>
+    <string name="action_map">Show on map</string>
+    <string name="title_activity_settings">Settings</string>
 
     <!-- Menu label to fetch updated weather info from the server -->
     <string name="action_refresh" translatable="false">Refresh</string>
