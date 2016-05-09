@@ -240,7 +240,6 @@ public class ForecastFragment extends Fragment {
 
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
                 String units = preferences.getString(getString(R.string.pref_units_key), getString(R.integer.pref_units_default));
-                Log.v(LOG_TAG, "Units: " + units);
                 if(!units.equals("1")){
                     high = metricToImperial(high);
                     low = metricToImperial(low);
